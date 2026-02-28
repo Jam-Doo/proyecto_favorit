@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Nuestro Primer Mes ❤️</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="corazones"></div>
+
+<div class="contenedor">
+    <h1>❤️ Feliz Primer Mes ❤️</h1>
+
+    <p class="mensaje">
+        El que tú llegaras alegro mi vida,
+        ahora los 25 de cada mes tienen más sentido
+        a tu lado
+    </p>
+
+    <h2>Tiempo juntos:</h2>
+
+    <div id="contador"></div>
+    <button class="btn-amor" onclick="sorpresa()">
+    ✨ Abrir Mensaje ✨
+</button>
+
+<p id="mensajeSorpresa" style="display:none; margin-top:20px; font-size:22px;">
+    Gracias por este primer junto ati mi amor ❤️
+</p>
+
+    <p class="firma">Te amo mucho 💌</p>
+</div>
+
+<script>
+
+    function sorpresa(){
+    document.getElementById("mensajeSorpresa").style.display = "block";
+}
+
+const fechaInicio = new Date("January 25, 2026 18:27:00").getTime();
+
+function actualizarContador() {
+
+    const ahora = new Date().getTime();
+    const diferencia = ahora - fechaInicio;
+
+    const dias = Math.floor(diferencia / (1000 * 60 * 60 * 24));
+    const horas = Math.floor((diferencia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutos = Math.floor((diferencia % (1000 * 60 * 60)) / (1000 * 60));
+    const segundos = Math.floor((diferencia % (1000 * 60)) / 1000);
+
+    document.getElementById("contador").innerHTML =
+        dias + " días " +
+        horas + " horas " +
+        minutos + " minutos " +
+        segundos + " segundos ❤️";
+}
+
+setInterval(actualizarContador, 1000);
+
+</script>
+
+</body>
+</html>
